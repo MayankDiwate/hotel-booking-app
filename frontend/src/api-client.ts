@@ -44,12 +44,10 @@ export const validateToken = async () => {
     credentials: "include",
   });
 
-  const resBody = await res.json();
-
   if (!res.ok) {
-    throw new Error(resBody.message);
+    throw new Error("Token invalid");
   }
-  return resBody;
+  return res.json();
 };
 
 export const signOut = async () => {
